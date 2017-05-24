@@ -1,2 +1,4 @@
 *.yml
 src/
+/.idea
+.DS_Store
