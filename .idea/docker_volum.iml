@@ -5,24 +5,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="PHP Runtime" type="php">
+      <library name="PHP" type="php">
         <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
+          <root url="jar://$APPLICATION_PLUGINS_DIR$/phpstorm-library-plugin.jar!/Phalcon/Phalcon" />
         </CLASSES>
         <SOURCES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://$MODULE_DIR$/php7/src/phpunit-6.1.4.phar/" />
-          <root url="phar://$MODULE_DIR$/php7/src/composer.phar/" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://$MODULE_DIR$/php7/src/phpunit-6.1.4.phar/" />
-          <root url="phar://$MODULE_DIR$/php7/src/composer.phar/" />
+          <root url="jar://$APPLICATION_PLUGINS_DIR$/phpstorm-library-plugin.jar!/Phalcon/Phalcon" />
         </SOURCES>
       </library>
     </orderEntry>

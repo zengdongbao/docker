@@ -1,37 +1,25 @@
 #!/bin/sh
 
-if [ ! -d "/etc/periodic/min" ]; then
-    mkdir -p /etc/periodic/min
-fi
+set -ex
 
-CONFILE=/etc/sphinx.conf
+if [ "$CONFILE" = "" ]; then
+    echo "Please set config file to start server"
+    exit 1
+fi
 
 if [ ! -f "$CONFILE" ]; then
     echo "config file not found"
     exit 1
 fi
 
-if [ ! -d "/var/lib/sphinx/log" ]; then
-    mkdir -p /var/lib/sphinx/log
-fi
-
-if [ ! -d "/var/lib/sphinx/data" ]; then
-    mkdir -p /var/lib/sphinx/data
-fi
-
-
-#built indexer
+#初始化索引
 indexer --all --quiet --config $CONFILE
 
-#cron job
-{
-    echo "#!/bin/sh";
-    echo "indexer --rotate --quiet --config $CONFILE";
-} | tee /etc/periodic/min/sphinx
-chmod +x /etc/periodic/min/sphinx
-echo "* * * * * run-parts /etc/periodic/min" >> /var/spool/cron/crontabs/root
+#启动crond
+crond
 
-crond -b
+#定时更新索引
+echo "*/15   *   *   *   *   indexer --rotate --quiet --config $CONFILE 1>> /dev/null 2>&1" >> /var/spool/cron/crontabs/root
 
 exec searchd --console --config $CONFILE
 

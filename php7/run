@@ -1,8 +1,0 @@
-#!/bin/sh
-
-set -e
-
-#设置composer源
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
-exec "$@"

@@ -4,3 +4,11 @@ COPY fastcgi.conf /etc/nginx/fastcgi.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
 
+VOLUME ["/etc/nginx/conf.d"]
+
+
+
+
+
+
+

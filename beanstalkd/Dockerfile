@@ -7,28 +7,8 @@ RUN  { \
     } | tee /etc/apk/repositories
 
 
-RUN apk -U add --no-cache sphinx
+RUN apk -U add --no-cache beanstalkd
 
+EXPOSE 11300
 
-COPY run.sh /bin/run
-
-
-EXPOSE 9312
-
-
-VOLUME ["/var/lib/sphinx","/etc/sphinx"]
-
-
-RUN chmod +x /bin/run
-
-
-ENTRYPOINT ["run"]
-
-
-
-
-
-
-
-
-
+VOLUME /var/lib/beanstalkd
